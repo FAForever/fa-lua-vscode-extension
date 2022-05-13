@@ -1,16 +1,6 @@
 {
     "version": "2.0.0",
     "type": "shell",
-    "windows": {
-        "options": {
-            "shell": {
-                "executable": "C:\\Windows\\System32\\cmd.exe",
-                "args": [
-                    "/c"
-                ]
-            }
-        }
-    },
     "options": {
         "cwd": "${workspaceFolder}"
     },
@@ -25,7 +15,19 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "label": "tsc: 构建 - client/tsconfig.json"
+            "label": "tsc: build - client/tsconfig.json"
+        },
+        {
+            "label": "build-server",
+            "type": "shell",
+            "command": "./3rd/luamake/luamake rebuild",
+            "windows": {
+                "command": "./3rd/luamake/luamake.exe rebuild"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/server",
+            },
+            "problemMatcher": []
         }
     ]
 }

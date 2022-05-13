@@ -3,7 +3,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "发布",
+            "name": "release",
             "type": "lua",
             "request": "launch",
             "stopOnEntry": false,
@@ -19,7 +19,7 @@
             ],
         },
         {
-            "name": "导出配置文件",
+            "name": "export config file",
             "type": "lua",
             "request": "launch",
             "stopOnEntry": false,
@@ -41,6 +41,7 @@
             "runtimeExecutable": "${execPath}",
             "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
             "outFiles": ["${workspaceRoot}/client/out/**/*.js"],
+            "preLaunchTask": "build-server"
         },
     ]
 }
