@@ -1,0 +1,17 @@
+{
+    "Lua.runtime.path": [
+        "/?"
+    ],
+    "Lua.runtime.pathStrict": true,
+    "Lua.completion.requireSeparator": "/",
+    "Lua.misc.parameters": [
+        "--preview",
+        "--develop=true",
+        "--dbgport=11413",
+        "--loglevel=trace",
+        // "--dbgwait=true",
+    ],
+    "Lua.workspace.checkThirdParty": false,
+    "Lua.runtime.exportEnvDefault": true,
+    
+}

@@ -1,15 +1,10 @@
 {
-	"__metadata": {
-		"id": "3a15b5a7-be12-47e3-8445-88ee3eabc8b2",
-		"publisherDisplayName": "sumneko",
-		"publisherId": "fb626675-24cf-4881-8c13-b465f29bec2f"
-	},
 	"activationEvents": [
 		"onLanguage:lua",
 		"onWebviewPanel:lua-doc",
 		"onCommand:extension.lua.doc"
 	],
-	"author": "sumneko",
+	"author": "khahn",
 	"capabilities": {
 		"untrustedWorkspaces": {
 			"description": "",
@@ -1444,6 +1439,12 @@
 					"scope": "resource",
 					"type": "boolean"
 				},
+				"Lua.runtime.exportEnvDefault": {
+					"default": false,
+					"markdownDescription": "By when true files that set global will be treated as such and will only export env with comment ---@export-env changing this setting to true reverses that and requires a comment ---@declare-global to change it back",
+					"scope": "resource",
+					"type": "boolean"
+				},
 				"Lua.runtime.plugin": {
 					"default": "",
 					"markdownDescription": "%config.runtime.plugin%",
@@ -1734,7 +1735,7 @@
 		]
 	},
 	"description": "Lua Language Server coded by Lua",
-	"displayName": "Lua",
+	"displayName": "Lua FA",
 	"engines": {
 		"vscode": "^1.61.0"
 	},
@@ -1747,7 +1748,7 @@
 	"license": "MIT",
 	"main": "./client/out/extension",
 	"name": "lua",
-	"publisher": "sumneko",
+	"publisher": "khahn",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/sumneko/lua-language-server"

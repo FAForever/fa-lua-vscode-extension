@@ -11,10 +11,7 @@
             "problemMatcher": [
                 "$tsc"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "label": "tsc: build - client/tsconfig.json"
         },
         {
@@ -25,9 +22,13 @@
                 "command": "./3rd/luamake/luamake.exe rebuild"
             },
             "options": {
-                "cwd": "${workspaceFolder}/server",
+                "cwd": "${workspaceFolder}/server"
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

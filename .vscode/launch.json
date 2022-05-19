@@ -41,7 +41,7 @@
             "runtimeExecutable": "${execPath}",
             "args": ["--extensionDevelopmentPath=${workspaceRoot}"],
             "outFiles": ["${workspaceRoot}/client/out/**/*.js"],
-            "preLaunchTask": "build-server"
+            // "preLaunchTask": "build-server"
         },
     ]
 }
