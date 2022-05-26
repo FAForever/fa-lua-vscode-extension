@@ -1,6 +1,8 @@
 {
     "Lua.runtime.version": "Lua 5.4",
-    "Lua.workspace.library": {
-        "server/script-beta": true
-    }
+    "Lua.workspace.ignoreSubmodules": false,
+    "Lua.workspace.ignoreDir": [
+        ".vscode",
+        "server"
+    ]
 }

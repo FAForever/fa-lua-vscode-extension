@@ -2,6 +2,7 @@
     "Lua.runtime.path": [
         "/?"
     ],
+    "Lua.completion.showWord": "Disable",
     "Lua.runtime.pathStrict": true,
     "Lua.completion.requireSeparator": "/",
     "Lua.misc.parameters": [
@@ -13,5 +14,7 @@
     ],
     "Lua.workspace.checkThirdParty": false,
     "Lua.runtime.exportEnvDefault": true,
-    
+    "[lua]": {
+        "editor.wordBasedSuggestions": false,
+    },
 }
