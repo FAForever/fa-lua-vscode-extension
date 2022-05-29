@@ -17,4 +17,20 @@
     "[lua]": {
         "editor.wordBasedSuggestions": false,
     },
+    "Lua.runtime.version": "Lua 5.1",
+    "Lua.runtime.special": {
+        "import": "require",
+        "doscript": "require"
+    },
+    "Lua.runtime.nonstandardSymbol": [
+        "continue",
+        "!="
+    ],
+    "Lua.diagnostics.globals": [
+        "moho"
+    ],
+    "Lua.runtime.plugin": "${3rd}/fa/plugin.lua",
+    "Lua.workspace.library": [
+        "${3rd}/fa/library"
+    ],
 }
