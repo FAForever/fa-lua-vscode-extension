@@ -1743,7 +1743,12 @@
 					]
 				}
 			}
-		]
+		],
+		"configurationDefaults": {
+			"[lua]": {
+				"editor.wordBasedSuggestions": false
+			}
+		}
 	},
 	"description": "Lua Language Server coded by Lua",
 	"displayName": "Lua FA",
@@ -1762,7 +1767,7 @@
 	"publisher": "khahn",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sumneko/lua-language-server"
+		"url": "https://github.com/khahn/lua-language-server"
 	},
 	"version": "0.9.4"
 }
