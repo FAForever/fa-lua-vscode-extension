@@ -20,8 +20,11 @@ return {
         "IntelliSense",
         "EmmyLua",
     },
+    sponsor = {
+        url = "https://github.com/sumneko/lua-language-server/issues/484"
+    },
     engines = {
-        vscode = "^1.61.0"
+        vscode = "^1.67.0"
     },
     activationEvents = {
         "onLanguage:lua",
@@ -33,7 +36,7 @@ return {
         configuration = {
             type = "object",
             title = "Lua",
-            properties = require 'package.configuration',
+            properties = require 'server.tools.configuration',
         },
         semanticTokenScopes = {
             {

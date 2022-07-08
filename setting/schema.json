@@ -1,46 +1,6 @@
 {
     "description": "Setting of sumneko.lua",
     "properties": {
-        "IntelliSense": {
-            "properties": {
-                "traceBeSetted": {
-                    "$ref": "#/properties/IntelliSense.traceBeSetted"
-                },
-                "traceFieldInject": {
-                    "$ref": "#/properties/IntelliSense.traceFieldInject"
-                },
-                "traceLocalSet": {
-                    "$ref": "#/properties/IntelliSense.traceLocalSet"
-                },
-                "traceReturn": {
-                    "$ref": "#/properties/IntelliSense.traceReturn"
-                }
-            }
-        },
-        "IntelliSense.traceBeSetted": {
-            "default": false,
-            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "IntelliSense.traceFieldInject": {
-            "default": false,
-            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "IntelliSense.traceLocalSet": {
-            "default": false,
-            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "resource",
-            "type": "boolean"
-        },
-        "IntelliSense.traceReturn": {
-            "default": false,
-            "markdownDescription": "Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/IntelliSense-optional-features) to learn more.",
-            "scope": "resource",
-            "type": "boolean"
-        },
         "completion": {
             "properties": {
                 "autoRequire": {
@@ -170,11 +130,20 @@
                 "disable": {
                     "$ref": "#/properties/diagnostics.disable"
                 },
+                "disableScheme": {
+                    "$ref": "#/properties/diagnostics.disableScheme"
+                },
                 "enable": {
                     "$ref": "#/properties/diagnostics.enable"
                 },
                 "globals": {
                     "$ref": "#/properties/diagnostics.globals"
+                },
+                "groupFileStatus": {
+                    "$ref": "#/properties/diagnostics.groupFileStatus"
+                },
+                "groupSeverity": {
+                    "$ref": "#/properties/diagnostics.groupSeverity"
                 },
                 "ignoredFiles": {
                     "$ref": "#/properties/diagnostics.ignoredFiles"
@@ -197,10 +166,117 @@
             }
         },
         "diagnostics.disable": {
+            "default": [],
             "items": {
+                "enum": [
+                    "not-yieldable",
+                    "redundant-parameter",
+                    "break-outside",
+                    "undefined-doc-class",
+                    "unknown-symbol",
+                    "miss-method",
+                    "err-nonstandard-symbol",
+                    "unknown-attribute",
+                    "unexpect-efunc-name",
+                    "different-requires",
+                    "miss-end",
+                    "await-in-sync",
+                    "args-after-dots",
+                    "err-eq-as-assign",
+                    "newfield-call",
+                    "err-assign-as-eq",
+                    "undefined-doc-param",
+                    "param-type-mismatch",
+                    "global-in-nil-env",
+                    "missing-parameter",
+                    "miss-sep-in-table",
+                    "unknown-cast-variable",
+                    "miss-loop-min",
+                    "malformed-number",
+                    "err-do-as-then",
+                    "spell-check",
+                    "undefined-env-child",
+                    "missing-return-value",
+                    "discard-returns",
+                    "redundant-return",
+                    "miss-esc-x",
+                    "redundant-value",
+                    "duplicate-doc-alias",
+                    "doc-field-no-class",
+                    "no-visible-label",
+                    "miss-exp",
+                    "miss-loop-max",
+                    "miss-name",
+                    "empty-block",
+                    "unused-local",
+                    "err-then-as-do",
+                    "duplicate-doc-field",
+                    "redefined-label",
+                    "exp-in-action",
+                    "set-const",
+                    "circle-doc-class",
+                    "unexpect-lfunc-name",
+                    "unsupport-symbol",
+                    "unused-label",
+                    "action-after-return",
+                    "unexpect-dots",
+                    "newline-call",
+                    "jump-local-scope",
+                    "close-non-object",
+                    "miss-field",
+                    "count-down-loop",
+                    "cast-type-mismatch",
+                    "duplicate-index",
+                    "unexpect-symbol",
+                    "block-after-else",
+                    "unicode-name",
+                    "miss-exponent",
+                    "err-esc",
+                    "redundant-return-value",
+                    "unbalanced-assignments",
+                    "err-c-long-comment",
+                    "undefined-doc-name",
+                    "ambiguity-1",
+                    "trailing-space",
+                    "deprecated",
+                    "codestyle-check",
+                    "missing-return",
+                    "undefined-global",
+                    "unused-function",
+                    "code-after-break",
+                    "assign-type-mismatch",
+                    "local-limit",
+                    "cast-local-type",
+                    "need-check-nil",
+                    "keyword",
+                    "unknown-diag-code",
+                    "unused-vararg",
+                    "err-comment-prefix",
+                    "lowercase-global",
+                    "return-type-mismatch",
+                    "duplicate-set-field",
+                    "redefined-local",
+                    "no-unknown",
+                    "duplicate-doc-param",
+                    "index-in-func-name",
+                    "miss-symbol",
+                    "undefined-field",
+                    "miss-space-between"
+                ],
                 "type": "string"
             },
             "markdownDescription": "Disabled diagnostic (Use code in hover brackets).",
+            "scope": "resource",
+            "type": "array"
+        },
+        "diagnostics.disableScheme": {
+            "default": [
+                "git"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Do not diagnose Lua files that use the following scheme.",
             "scope": "resource",
             "type": "array"
         },
@@ -211,12 +287,307 @@
             "type": "boolean"
         },
         "diagnostics.globals": {
+            "default": [],
             "items": {
                 "type": "string"
             },
             "markdownDescription": "Defined global variables.",
             "scope": "resource",
             "type": "array"
+        },
+        "diagnostics.groupFileStatus": {
+            "additionalProperties": false,
+            "markdownDescription": "Modify the diagnostic needed file status in a group.\n\n* Opened:  only diagnose opened files\n* Any:     diagnose all files\n* None:    disable this diagnostic\n\n`Fallback` means that diagnostics in this group are controlled by `diagnostics.neededFileStatus` separately.\nOther settings will override individual settings without end of `!`.\n",
+            "properties": {
+                "ambiguity": {
+                    "default": "Fallback",
+                    "description": "* ambiguity-1\n* count-down-loop\n* different-requires\n* newfield-call\n* newline-call",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "await": {
+                    "default": "Fallback",
+                    "description": "* await-in-sync\n* not-yieldable",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "codestyle": {
+                    "default": "Fallback",
+                    "description": "* codestyle-check\n* spell-check",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "duplicate": {
+                    "default": "Fallback",
+                    "description": "* duplicate-index\n* duplicate-set-field",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "global": {
+                    "default": "Fallback",
+                    "description": "* global-in-nil-env\n* lowercase-global\n* undefined-env-child\n* undefined-global",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "luadoc": {
+                    "default": "Fallback",
+                    "description": "* cast-type-mismatch\n* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "redefined": {
+                    "default": "Fallback",
+                    "description": "* redefined-local",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "strict": {
+                    "default": "Fallback",
+                    "description": "* close-non-object\n* deprecated\n* discard-returns",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "strong": {
+                    "default": "Fallback",
+                    "description": "* no-unknown",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "type-check": {
+                    "default": "Fallback",
+                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "unbalanced": {
+                    "default": "Fallback",
+                    "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "unused": {
+                    "default": "Fallback",
+                    "description": "* code-after-break\n* empty-block\n* redundant-return\n* trailing-space\n* unused-function\n* unused-label\n* unused-local\n* unused-vararg",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "title": "groupFileStatus",
+            "type": "object"
+        },
+        "diagnostics.groupSeverity": {
+            "additionalProperties": false,
+            "markdownDescription": "Modify the diagnostic severity in a group.\n`Fallback` means that diagnostics in this group are controlled by `diagnostics.severity` separately.\nOther settings will override individual settings without end of `!`.\n",
+            "properties": {
+                "ambiguity": {
+                    "default": "Fallback",
+                    "description": "* ambiguity-1\n* count-down-loop\n* different-requires\n* newfield-call\n* newline-call",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "await": {
+                    "default": "Fallback",
+                    "description": "* await-in-sync\n* not-yieldable",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "codestyle": {
+                    "default": "Fallback",
+                    "description": "* codestyle-check\n* spell-check",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "duplicate": {
+                    "default": "Fallback",
+                    "description": "* duplicate-index\n* duplicate-set-field",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "global": {
+                    "default": "Fallback",
+                    "description": "* global-in-nil-env\n* lowercase-global\n* undefined-env-child\n* undefined-global",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "luadoc": {
+                    "default": "Fallback",
+                    "description": "* cast-type-mismatch\n* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "redefined": {
+                    "default": "Fallback",
+                    "description": "* redefined-local",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "strict": {
+                    "default": "Fallback",
+                    "description": "* close-non-object\n* deprecated\n* discard-returns",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "strong": {
+                    "default": "Fallback",
+                    "description": "* no-unknown",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "type-check": {
+                    "default": "Fallback",
+                    "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "unbalanced": {
+                    "default": "Fallback",
+                    "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                },
+                "unused": {
+                    "default": "Fallback",
+                    "description": "* code-after-break\n* empty-block\n* redundant-return\n* trailing-space\n* unused-function\n* unused-label\n* unused-local\n* unused-vararg",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Fallback"
+                    ],
+                    "type": "string"
+                }
+            },
+            "scope": "resource",
+            "title": "groupSeverity",
+            "type": "object"
         },
         "diagnostics.ignoredFiles": {
             "default": "Opened",
@@ -252,7 +623,7 @@
         },
         "diagnostics.neededFileStatus": {
             "additionalProperties": false,
-            "markdownDescription": "* Opened:  only diagnose opened files\n* Any:     diagnose all files\n* Disable: disable this diagnostic\n",
+            "markdownDescription": "* Opened:  only diagnose opened files\n* Any:     diagnose all files\n* None:    disable this diagnostic\n\nEnd with `!` means override the group setting `diagnostics.groupFileStatus`.\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Any",
@@ -260,7 +631,23 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "assign-type-mismatch": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.assign-type-mismatch%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -270,7 +657,36 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "cast-local-type": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.cast-local-type%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "cast-type-mismatch": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.cast-type-mismatch%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -280,7 +696,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -290,7 +709,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -300,7 +722,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -310,7 +735,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -320,17 +748,23 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
                 "deprecated": {
-                    "default": "Opened",
+                    "default": "Any",
                     "description": "%config.diagnostics.deprecated%",
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -340,17 +774,23 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
                 "discard-returns": {
-                    "default": "Opened",
+                    "default": "Any",
                     "description": "%config.diagnostics.discard-returns%",
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -360,7 +800,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -370,7 +813,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -380,7 +826,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -390,7 +839,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -400,7 +852,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -410,7 +865,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -420,7 +878,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -430,7 +891,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -440,17 +904,49 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
                 "missing-parameter": {
-                    "default": "Opened",
+                    "default": "Any",
                     "description": "%config.diagnostics.missing-parameter%",
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "missing-return": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.missing-return%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "missing-return-value": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.missing-return-value%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -460,7 +956,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -470,7 +969,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -480,7 +982,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -490,7 +995,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -500,7 +1008,23 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "param-type-mismatch": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.param-type-mismatch%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -510,17 +1034,23 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
                 "redundant-parameter": {
-                    "default": "Opened",
+                    "default": "Any",
                     "description": "Enable redundant function parameter diagnostics.",
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -530,17 +1060,62 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "redundant-return-value": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.redundant-return-value%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
                 "redundant-value": {
-                    "default": "Opened",
+                    "default": "Any",
                     "description": "Enable the redundant values assigned diagnostics. It's raised during assignment operation, when the number of values is higher than the number of objects being assigned.",
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "return-type-mismatch": {
+                    "default": "Opened",
+                    "description": "%config.diagnostics.return-type-mismatch%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "spell-check": {
+                    "default": "None",
+                    "description": "%config.diagnostics.spell-check%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -550,17 +1125,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
-                    ],
-                    "type": "string"
-                },
-                "type-check": {
-                    "default": "None",
-                    "description": "%config.diagnostics.type-check%",
-                    "enum": [
-                        "Any",
-                        "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -570,7 +1138,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -580,7 +1151,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -590,7 +1164,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -600,7 +1177,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -610,7 +1190,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -620,7 +1203,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -630,7 +1216,23 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
+                    ],
+                    "type": "string"
+                },
+                "unknown-cast-variable": {
+                    "default": "Any",
+                    "description": "%config.diagnostics.unknown-cast-variable%",
+                    "enum": [
+                        "Any",
+                        "Opened",
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -640,7 +1242,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -650,7 +1255,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -660,7 +1268,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -670,7 +1281,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 },
@@ -680,7 +1294,10 @@
                     "enum": [
                         "Any",
                         "Opened",
-                        "None"
+                        "None",
+                        "Any!",
+                        "Opened!",
+                        "None!"
                     ],
                     "type": "string"
                 }
@@ -691,7 +1308,7 @@
         },
         "diagnostics.severity": {
             "additionalProperties": false,
-            "markdownDescription": "Modified diagnostic severity.",
+            "markdownDescription": "Modify the diagnostic severity.\n\nEnd with `!` means override the group setting `diagnostics.groupSeverity`.\n",
             "properties": {
                 "ambiguity-1": {
                     "default": "Warning",
@@ -700,7 +1317,26 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "assign-type-mismatch": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.assign-type-mismatch%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -711,7 +1347,41 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "cast-local-type": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.cast-local-type%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "cast-type-mismatch": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.cast-type-mismatch%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -722,7 +1392,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -733,7 +1407,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -744,7 +1422,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -755,7 +1437,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -766,7 +1452,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -777,7 +1467,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -788,7 +1482,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -799,7 +1497,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -810,7 +1512,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -821,7 +1527,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -832,7 +1542,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -843,7 +1557,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -854,7 +1572,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -865,7 +1587,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -876,7 +1602,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -887,7 +1617,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -898,7 +1632,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -909,7 +1647,41 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "missing-return": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.missing-return%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "missing-return-value": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.missing-return-value%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -920,7 +1692,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -931,29 +1707,41 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
                 "newline-call": {
-                    "default": "Information",
+                    "default": "Warning",
                     "description": "Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.",
                     "enum": [
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
                 "no-unknown": {
-                    "default": "Information",
+                    "default": "Warning",
                     "description": "%config.diagnostics.no-unknown%",
                     "enum": [
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -964,7 +1752,26 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "param-type-mismatch": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.param-type-mismatch%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -975,7 +1782,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -986,18 +1797,41 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
                 "redundant-return": {
-                    "default": "Warning",
+                    "default": "Hint",
                     "description": "%config.diagnostics.redundant-return%",
                     "enum": [
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "redundant-return-value": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.redundant-return-value%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1008,7 +1842,41 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "return-type-mismatch": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.return-type-mismatch%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "spell-check": {
+                    "default": "Information",
+                    "description": "%config.diagnostics.spell-check%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1019,18 +1887,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
-                    ],
-                    "type": "string"
-                },
-                "type-check": {
-                    "default": "Warning",
-                    "description": "%config.diagnostics.type-check%",
-                    "enum": [
-                        "Error",
-                        "Warning",
-                        "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1041,7 +1902,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1052,7 +1917,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1063,7 +1932,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1074,7 +1947,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1085,7 +1962,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1096,7 +1977,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1107,7 +1992,26 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
+                    ],
+                    "type": "string"
+                },
+                "unknown-cast-variable": {
+                    "default": "Warning",
+                    "description": "%config.diagnostics.unknown-cast-variable%",
+                    "enum": [
+                        "Error",
+                        "Warning",
+                        "Information",
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1118,7 +2022,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1129,7 +2037,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1140,7 +2052,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1151,7 +2067,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 },
@@ -1162,7 +2082,11 @@
                         "Error",
                         "Warning",
                         "Information",
-                        "Hint"
+                        "Hint",
+                        "Error!",
+                        "Warning!",
+                        "Information!",
+                        "Hint!"
                     ],
                     "type": "string"
                 }
@@ -1194,8 +2118,17 @@
             }
         },
         "format.defaultConfig": {
-            "markdownDescription": "%config.format.defaultConfig%",
+            "additionalProperties": false,
+            "default": {},
+            "markdownDescription": "The default format configuration. Has a lower priority than `.editorconfig` file in the workspace.\nRead [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.\n",
+            "patternProperties": {
+                ".*": {
+                    "default": "",
+                    "type": "string"
+                }
+            },
             "scope": "resource",
+            "title": "defaultConfig",
             "type": "object"
         },
         "format.enable": {
@@ -1209,6 +2142,9 @@
                 "arrayIndex": {
                     "$ref": "#/properties/hint.arrayIndex"
                 },
+                "await": {
+                    "$ref": "#/properties/hint.await"
+                },
                 "enable": {
                     "$ref": "#/properties/hint.enable"
                 },
@@ -1217,6 +2153,9 @@
                 },
                 "paramType": {
                     "$ref": "#/properties/hint.paramType"
+                },
+                "semicolon": {
+                    "$ref": "#/properties/hint.semicolon"
                 },
                 "setType": {
                     "$ref": "#/properties/hint.setType"
@@ -1238,6 +2177,12 @@
             ],
             "scope": "resource",
             "type": "string"
+        },
+        "hint.await": {
+            "default": true,
+            "markdownDescription": "If the called function is marked `---@async`, prompt `await` at the call.",
+            "scope": "resource",
+            "type": "boolean"
         },
         "hint.enable": {
             "default": false,
@@ -1267,6 +2212,22 @@
             "scope": "resource",
             "type": "boolean"
         },
+        "hint.semicolon": {
+            "default": "SameLine",
+            "enum": [
+                "All",
+                "SameLine",
+                "Disable"
+            ],
+            "markdownDescription": "If there is no semicolon at the end of the statement, display a virtual semicolon.",
+            "markdownEnumDescriptions": [
+                "All statements display virtual semicolons.",
+                "When two statements are on the same line, display a semicolon between them.",
+                "Disable virtual semicolons."
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
         "hint.setType": {
             "default": false,
             "markdownDescription": "Show hints of type at assignment operation.",
@@ -1280,6 +2241,9 @@
                 },
                 "enumsLimit": {
                     "$ref": "#/properties/hover.enumsLimit"
+                },
+                "expandAlias": {
+                    "$ref": "#/properties/hover.expandAlias"
                 },
                 "previewFields": {
                     "$ref": "#/properties/hover.previewFields"
@@ -1307,8 +2271,14 @@
             "scope": "resource",
             "type": "integer"
         },
+        "hover.expandAlias": {
+            "default": true,
+            "markdownDescription": "Whether to expand the alias. For example, expands `---@alias myType boolean|number` appears as `boolean|number`, otherwise it appears as `myType'.\n",
+            "scope": "resource",
+            "type": "boolean"
+        },
         "hover.previewFields": {
-            "default": 20,
+            "default": 50,
             "markdownDescription": "When hovering to view a table, limits the maximum number of previews for fields.",
             "scope": "resource",
             "type": "integer"
@@ -1339,6 +2309,7 @@
             }
         },
         "misc.parameters": {
+            "default": [],
             "items": {
                 "type": "string"
             },
@@ -1353,6 +2324,9 @@
                 },
                 "fileEncoding": {
                     "$ref": "#/properties/runtime.fileEncoding"
+                },
+                "meta": {
+                    "$ref": "#/properties/runtime.meta"
                 },
                 "nonstandardSymbol": {
                     "$ref": "#/properties/runtime.nonstandardSymbol"
@@ -1533,6 +2507,7 @@
                 }
             },
             "scope": "resource",
+            "title": "builtin",
             "type": "object"
         },
         "runtime.fileEncoding": {
@@ -1544,10 +2519,23 @@
                 "utf16be"
             ],
             "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
+            "markdownEnumDescriptions": [
+                "%config.runtime.fileEncoding.utf8%",
+                "%config.runtime.fileEncoding.ansi%",
+                "%config.runtime.fileEncoding.utf16le%",
+                "%config.runtime.fileEncoding.utf16be%"
+            ],
+            "scope": "resource",
+            "type": "string"
+        },
+        "runtime.meta": {
+            "default": "${version} ${language} ${encoding}",
+            "markdownDescription": "Format of the directory name of the meta files.",
             "scope": "resource",
             "type": "string"
         },
         "runtime.nonstandardSymbol": {
+            "default": [],
             "items": {
                 "enum": [
                     "//",
@@ -1557,6 +2545,13 @@
                     "-=",
                     "*=",
                     "/=",
+                    "%=",
+                    "^=",
+                    "//=",
+                    "|=",
+                    "&=",
+                    "<<=",
+                    ">>=",
                     "||",
                     "&&",
                     "!",
@@ -1595,6 +2590,7 @@
         },
         "runtime.special": {
             "additionalProperties": false,
+            "default": {},
             "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
             "patternProperties": {
                 ".*": {
@@ -1609,12 +2605,15 @@
                         "loadfile",
                         "pcall",
                         "xpcall",
-                        "assert"
+                        "assert",
+                        "error",
+                        "type"
                     ],
                     "type": "string"
                 }
             },
             "scope": "resource",
+            "title": "special",
             "type": "object"
         },
         "runtime.unicodeName": {
@@ -1633,6 +2632,13 @@
                 "LuaJIT"
             ],
             "markdownDescription": "Lua runtime version.",
+            "markdownEnumDescriptions": [
+                "%config.runtime.version.Lua 5.1%",
+                "%config.runtime.version.Lua 5.2%",
+                "%config.runtime.version.Lua 5.3%",
+                "%config.runtime.version.Lua 5.4%",
+                "%config.runtime.version.LuaJIT%"
+            ],
             "scope": "resource",
             "type": "string"
         },
@@ -1689,6 +2695,22 @@
             "scope": "resource",
             "type": "boolean"
         },
+        "spell": {
+            "properties": {
+                "dict": {
+                    "$ref": "#/properties/spell.dict"
+                }
+            }
+        },
+        "spell.dict": {
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Custom words for spell checking.",
+            "scope": "resource",
+            "type": "array"
+        },
         "telemetry": {
             "properties": {
                 "enable": {
@@ -1707,6 +2729,37 @@
                 "boolean",
                 "null"
             ]
+        },
+        "type": {
+            "properties": {
+                "castNumberToInteger": {
+                    "$ref": "#/properties/type.castNumberToInteger"
+                },
+                "weakNilCheck": {
+                    "$ref": "#/properties/type.weakNilCheck"
+                },
+                "weakUnionCheck": {
+                    "$ref": "#/properties/type.weakUnionCheck"
+                }
+            }
+        },
+        "type.castNumberToInteger": {
+            "default": false,
+            "markdownDescription": "Allowed to assign the `number` type to the `integer` type.",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.weakNilCheck": {
+            "default": false,
+            "markdownDescription": "When checking the type of union type, ignore the `nil` in it.\n\nWhen this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.\n",
+            "scope": "resource",
+            "type": "boolean"
+        },
+        "type.weakUnionCheck": {
+            "default": false,
+            "markdownDescription": "Once one subtype of a union type meets the condition, the union type also meets the condition.\n\nWhen this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.\n",
+            "scope": "resource",
+            "type": "boolean"
         },
         "window": {
             "properties": {
@@ -1750,6 +2803,9 @@
                 "preloadFileSize": {
                     "$ref": "#/properties/workspace.preloadFileSize"
                 },
+                "supportScheme": {
+                    "$ref": "#/properties/workspace.supportScheme"
+                },
                 "useGitIgnore": {
                     "$ref": "#/properties/workspace.useGitIgnore"
                 },
@@ -1782,6 +2838,7 @@
             "type": "boolean"
         },
         "workspace.library": {
+            "default": [],
             "items": {
                 "type": "string"
             },
@@ -1801,6 +2858,19 @@
             "scope": "resource",
             "type": "integer"
         },
+        "workspace.supportScheme": {
+            "default": [
+                "file",
+                "untitled",
+                "git"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "markdownDescription": "Provide language server for the Lua files of the following scheme.",
+            "scope": "resource",
+            "type": "array"
+        },
         "workspace.useGitIgnore": {
             "default": true,
             "markdownDescription": "Ignore files list in `.gitignore` .",
@@ -1808,6 +2878,7 @@
             "type": "boolean"
         },
         "workspace.userThirdParty": {
+            "default": [],
             "items": {
                 "type": "string"
             },
