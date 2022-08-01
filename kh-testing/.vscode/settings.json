@@ -8,7 +8,7 @@
     "Lua.misc.parameters": [
         "--preview",
         "--develop=true",
-        "--dbgport=11413",
+        "--dbgport=11427",
         "--loglevel=trace",
         // "--dbgwait=true",
     ],
@@ -31,6 +31,6 @@
     ],
     "Lua.runtime.plugin": "${3rd}/fa/plugin.lua",
     "Lua.workspace.library": [
-        "${3rd}/fa/library"
+        // "${3rd}/fa/library"
     ],
 }
