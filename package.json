@@ -2812,5 +2812,5 @@
 		"type": "git",
 		"url": "https://github.com/khahn/lua-language-server"
 	},
-	"version": "1.2.0"
+	"version": "1.2.1"
 }
