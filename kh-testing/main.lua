@@ -11,6 +11,12 @@ end
 
 mainFunc()
 
+---some comment
+---@param test string
+---@return integer
+local function otherVal(test)
+    return 1
+end
 local someVal = function(arg)
     return 'test'
 end
@@ -26,7 +32,8 @@ local MyClass = {
     aFunction = function(self, param1)
         return 's'
     end,
-    decField = someVal
+    decField = someVal,
+    newFunc = val2
 }
 
 local t = MyClass.

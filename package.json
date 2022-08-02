@@ -5,6 +5,10 @@
 		"onCommand:extension.lua.doc"
 	],
 	"author": "khahn",
+	"scripts": {
+		"prepackage": "cd server && bin\\lua-language-server.exe test.lua",
+		"package": "npx vsce package"
+	},
 	"capabilities": {
 		"untrustedWorkspaces": {
 			"description": "",
