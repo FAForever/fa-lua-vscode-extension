@@ -1,8 +1,8 @@
--- local fTest = require('/function-test.lua')
+local fTest = require('/function-test.lua')
 
--- local child = require('/child.lua')
+local child = import("/child.lua")
 
--- child.childFunc()
+child.childFunc()
 
 local function mainFunc()
     local var = 'some string'
