@@ -3,6 +3,17 @@ local fTest = require('/function-test.lua')
 local child = import("/child.lua")
 
 child.childFunc()
+local v = child.someValue
+
+local t = {
+    val = 1
+}
+local y = t.val
+
+---@param num number
+function T(num)end
+
+T(23 | 85)
 
 local function mainFunc()
     local var = 'some string'
@@ -36,8 +47,7 @@ local MyClass = {
     newFunc = val2
 }
 
-local t = MyClass.
-
+local t = MyClass
 ---comment
 ---@param c MyClass
 function callMe(c) end
@@ -46,3 +56,17 @@ callMe({
     aField = "test",
     aFunction = function() end
 })
+
+---@generic T: table, K, V
+---@param t T
+---@return fun(table: table<K, V>, index?: K):K, V
+---@return T
+function fixType(t)
+    return t
+end
+
+---@type table<number, MyClass>
+local someTable = {}
+for index, value in someTable do
+    
+end
