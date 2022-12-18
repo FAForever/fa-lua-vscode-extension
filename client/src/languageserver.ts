@@ -52,7 +52,7 @@ class LuaClient {
     public client: LanguageClient;
     private disposables = new Array<Disposable>();
     constructor(private context: ExtensionContext,
-                private documentSelector: DocumentSelector) {
+        private documentSelector: DocumentSelector) {
     }
 
     async start() {
@@ -111,7 +111,7 @@ class LuaClient {
 
         let serverOptions: ServerOptions = {
             command: command,
-            args:    commandParam,
+            args: commandParam,
         };
 
         this.client = new LanguageClient(
@@ -125,8 +125,9 @@ class LuaClient {
         await this.client.start();
         this.onCommand();
         this.statusBar();
+        this.dataExport();
     }
-   
+
     async stop() {
         this.client.stop();
         for (const disposable of this.disposables) {
@@ -149,11 +150,20 @@ class LuaClient {
             bar.hide();
         }))
         this.disposables.push(client.onNotification('$/status/report', (params) => {
-            bar.text    = params.text;
+            bar.text = params.text;
             bar.tooltip = params.tooltip;
         }))
         client.sendNotification('$/status/refresh');
         this.disposables.push(bar);
+    }
+
+    dataExport() {
+        this.disposables.push(
+            Commands.registerCommand('FALua.ExportData', async () => {
+                const result = await this.client.sendRequest('$/export/data');
+                console.log('##FA', result);
+            })
+        );
     }
 
     onCommand() {

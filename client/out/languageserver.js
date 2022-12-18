@@ -94,6 +94,7 @@ class LuaClient {
             yield this.client.start();
             this.onCommand();
             this.statusBar();
+            this.dataExport();
         });
     }
     stop() {
@@ -124,6 +125,12 @@ class LuaClient {
         }));
         client.sendNotification('$/status/refresh');
         this.disposables.push(bar);
+    }
+    dataExport() {
+        this.disposables.push(vscode_1.commands.registerCommand('FALua.ExportData', () => __awaiter(this, void 0, void 0, function* () {
+            const result = yield this.client.sendRequest('$/export/data');
+            console.log('##FA', result);
+        })));
     }
     onCommand() {
         this.disposables.push(this.client.onNotification('$/command', (params) => {
